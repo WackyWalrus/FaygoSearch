@@ -157,6 +157,7 @@ $countRows = $countRows['COUNT(*)'];
 	</head>
 	<body>
 		<h3><?=$siteName;?> <a href="javascript:void(0);" onclick="addStoreAction();" class="button" style="position:relative;left:50px">Add Store</a></h3>
+		<div style="text-align:center;margin-bottom:20px"><?=$countRows;?> Stores with Faygo Found!</div>
 		<div id="add-store">
 			<div class="former">Store Name:</div>
 			<input type="text" id="input-store-name" />
