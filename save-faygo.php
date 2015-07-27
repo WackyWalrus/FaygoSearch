@@ -30,9 +30,14 @@ if($_POST['store'] && $_POST['state'] && $_POST['city'] && $_POST['address']){
     $lat = $array->results[0]->geometry->location->lat;
     $lng = $array->results[0]->geometry->location->lng;
     $storeName = $mysqli->real_escape_string($_POST['store']);
+    $faygos = array();
+    foreach($_POST['sodas'] as $soda){
+        $faygos[] = intval($soda);
+    }
+    $faygos = implode(',',$faygos);
     $time = time();
 
-    $mysqli->query("INSERT INTO faygos (`store_name`,`lat`,`lng`,`state`,`city`,`address`,`datestamp`) VALUES ('{$storeName}','{$lat}','{$lng}','{$state}','{$city}','{$address}',{$time})");
+    $mysqli->query("INSERT INTO faygos (`store_name`,`lat`,`lng`,`state`,`city`,`address`,`sodas`,`datestamp`) VALUES ('{$storeName}','{$lat}','{$lng}','{$state}','{$city}','{$address}','{$faygos}',{$time})");
 
 }else{
     echo 'test';

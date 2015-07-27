@@ -7,6 +7,9 @@ while($results = $sql->fetch_assoc()){
 $count = $mysqli->query("SELECT COUNT(*) FROM faygos");
 $countRows = $count->fetch_assoc();
 $countRows = $countRows['COUNT(*)'];
+
+$sodas = array();
+$sodaSql = $mysqli->query("SELECT * FROM sodas");
 ?>
 <!DOCTYPE html>
 <html>
@@ -136,12 +139,19 @@ $countRows = $countRows['COUNT(*)'];
 				state = document.getElementById('select-state').value,
 				city = document.getElementById('input-city').value,
 				address = document.getElementById('input-address').value;
+			var faygoInput = document.getElementById('input-faygos');
+			var selectedFaygos = [];
+			for(var i = 0; i < faygoInput.length; i++){
+				if(faygoInput.options[i].selected) selectedFaygos.push(faygoInput.options[i].value);
+			}
+
 			//if(storeName && state && city && address){
 				$.post('save-faygo.php',
 					{'store': storeName,
 					'state': state,
 					'city': city,
-					'address': address},
+					'address': address,
+					'sodas': selectedFaygos},
 					function(data){
 						//console.log(data);
 						document.location.href = document.location.href;
@@ -219,6 +229,12 @@ $countRows = $countRows['COUNT(*)'];
 			<input type="text" id="input-city" />
 			<div class="former">Address:</div>
 			<input type="text" id="input-address" />
+			<div class="former">Faygo Flavors:</div>
+			<select id="input-faygos" multiple="multiple">
+				<?php while($sodaResults = $sodaSql->fetch_assoc()){ ?>
+					<option value="<?=$sodaResults['id'];?>"><?=$sodaResults['name'];?></option>
+				<?php } ?>
+			</select>
 			<div class="clear"></div>
 			<a href="javascript:void(0)" onclick="saveFaygo();" class="button">Save</a>
 		</div>
