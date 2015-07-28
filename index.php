@@ -2,7 +2,7 @@
 $sql = $mysqli->query("SELECT * FROM faygos");
 $locations = array();
 while($results = $sql->fetch_assoc()){
-	$grabSodaNames = $mysqli->query("SELECT * FROM sodas WHERE id IN ({$results['sodas']}) ORDER BY name ASC");
+	$grabSodaNames = $mysqli->query("SELECT * FROM sodas WHERE id IN ({$results['sodas']})");
 	$sodaNames = '';
 	while($gettingSodaNames = $grabSodaNames->fetch_assoc()){
 		$sodaNames .= "<li>".addslashes($gettingSodaNames['name'])."</li>";
@@ -15,7 +15,7 @@ $countRows = $count->fetch_assoc();
 $countRows = $countRows['COUNT(*)'];
 
 $sodas = array();
-$sodaSql = $mysqli->query("SELECT * FROM sodas");
+$sodaSql = $mysqli->query("SELECT * FROM sodas ORDER BY name ASC");
 ?>
 <!DOCTYPE html>
 <html>
@@ -128,9 +128,9 @@ $sodaSql = $mysqli->query("SELECT * FROM sodas");
 		<h3><?=$siteName;?> <a href="javascript:void(0);" onclick="addStoreAction();" class="button" style="position:relative;left:50px">Add Store</a></h3>
 		<div style="text-align:center;margin-bottom:20px"><?=$countRows;?> Stores with Faygo Found!</div>
 		<div id="add-store">
-			<div class="former">Store Name:</div>
+			<div class="former">Store Name: *</div>
 			<input type="text" id="input-store-name" />
-			<div class="former">State:</div>
+			<div class="former">State: *</div>
 			<select id="select-state">
 				<option value=""></option>
 				<option value="AL">AL</option>
@@ -184,9 +184,9 @@ $sodaSql = $mysqli->query("SELECT * FROM sodas");
 				<option value="WI">WI</option>
 				<option value="WY">WY</option>
 			</select>
-			<div class="former">City:</div>
+			<div class="former">City: *</div>
 			<input type="text" id="input-city" />
-			<div class="former">Address:</div>
+			<div class="former">Address: *</div>
 			<input type="text" id="input-address" />
 			<div class="former">Faygo Flavors:</div>
 			<select id="input-faygos" multiple="multiple">
@@ -195,6 +195,7 @@ $sodaSql = $mysqli->query("SELECT * FROM sodas");
 				<?php } ?>
 			</select>
 			<div class="clear"></div>
+			<div style="margin-top:10px">* = Required Fields</div>
 			<a href="javascript:void(0)" onclick="saveFaygo();" class="button">Save</a>
 		</div>
 		<div id="map-canvas"></div>
