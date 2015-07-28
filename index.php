@@ -2,6 +2,12 @@
 $sql = $mysqli->query("SELECT * FROM faygos");
 $locations = array();
 while($results = $sql->fetch_assoc()){
+	$grabSodaNames = $mysqli->query("SELECT * FROM sodas WHERE id IN ({$results['sodas']})");
+	$sodaNames = '';
+	while($gettingSodaNames = $grabSodaNames->fetch_assoc()){
+		$sodaNames .= "<li>".addslashes($gettingSodaNames['name'])."</li>";
+	}
+	$results['sodaNames'] = $sodaNames;
 	$locations[] = $results;
 }
 $count = $mysqli->query("SELECT COUNT(*) FROM faygos");
@@ -84,7 +90,7 @@ $sodaSql = $mysqli->query("SELECT * FROM sodas");
 			var infoWindowContent = [ <?php $i = 0;
 			foreach($locations as $results){ $i++;
 			//while($results = $sql->fetch_assoc()){ $i++; ?>
-				['<?=$results["store_name"];?>']<?php if($i != $countRows){?>,<?php } ?>
+				['<?=$results["store_name"];?><br><?=$results["city"];?> <?=$results["state"];?>. <?=$results["address"];?><br><?=$results["sodaNames"];?>']<?php if($i != $countRows){?>,<?php } ?>
 				<?php 
 			} ?> ];
 

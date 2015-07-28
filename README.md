@@ -7,6 +7,6 @@ Faygo can be a really hard soda to find, depending on where you live. They say K
 ## What else I need to do:
 - Search tool
 - ~~Ability to select what flavors of Faygo the store has~~
-- Add info about stores to the map (location & flavors)
+- ~~Add info about stores to the map (location & flavors)~~
 - Add more details about the store in a textbox
 - Make the site more mobile friendly
