@@ -21,7 +21,7 @@ $sodaSql = $mysqli->query("SELECT * FROM sodas ORDER BY name ASC");
 <html>
 	<head>
 		<title><?=$siteName;?></title>
-		<style type="text/css" href="styles.css"></style>
+		<link rel="stylesheet" type="text/css" href="styles.css" />
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC4RJ-gzdvIohmgHvcU1LnzMyPsaQED45s"></script>
 		<script type="text/javascript" src="scripts.js"></script>
