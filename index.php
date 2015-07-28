@@ -21,50 +21,7 @@ $sodaSql = $mysqli->query("SELECT * FROM sodas ORDER BY name ASC");
 <html>
 	<head>
 		<title><?=$siteName;?></title>
-		<style type="text/css">
-		.left { float: left; }
-		.right { float: right; }
-		.clear { clear: both; }
-		body {
-			font-family: sans-serif;
-		}
-		h3 {
-			display: block;
-			text-align: center;
-			width: 100%;
-		}
-		a.button {
-			display: inline-block;
-			text-decoration: none;
-			color: #FFF;
-			background-color: #FF0000;
-			padding: 5px 10px;
-			border-right: 2px solid #D10000;
-			border-bottom: 2px solid #D10000;
-			border-radius: 5px;
-			moz-border-radius: 5px;
-			webkit-border-radius: 5px;
-		}
-		#add-store {
-			text-align: center;
-			margin-bottom: 20px;
-			display: none;
-		}
-		#add-store .former {
-			margin-top: 10px;
-		}
-		#add-store .button {
-			margin-top: 10px;
-		}
-		input[type="text"],
-		select {
-			padding: 5px 10px;
-		}
-		#map-canvas {
-			width: 100%;
-			height: 600px;
-		}
-		</style>
+		<style type="text/css" href="styles.css"></style>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC4RJ-gzdvIohmgHvcU1LnzMyPsaQED45s"></script>
 		<script type="text/javascript" src="scripts.js"></script>
