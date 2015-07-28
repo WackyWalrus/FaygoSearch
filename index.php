@@ -26,7 +26,7 @@ $sodaSql = $mysqli->query("SELECT * FROM sodas ORDER BY name ASC");
 		<meta property="og:title" content="<?=$siteName;?> - find or log the nearest store with Faygo!" />
 		<meta property="og:url" content="http://faygosearch.tk/" />
 		<meta property="og:description" content="Use this tool to search for or log the nearest store with Faygo soda." />
-		<meta property="og:image" content="images/favicon_big.png" />
+		<meta property="og:image" content="http://faygosearch.tk/images/favicon_big.png" />
 		<link rel="stylesheet" type="text/css" href="styles.css" />
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC4RJ-gzdvIohmgHvcU1LnzMyPsaQED45s"></script>
