@@ -2,7 +2,7 @@
 $sql = $mysqli->query("SELECT * FROM faygos");
 $locations = array();
 while($results = $sql->fetch_assoc()){
-	$grabSodaNames = $mysqli->query("SELECT * FROM sodas WHERE id IN ({$results['sodas']})");
+	$grabSodaNames = $mysqli->query("SELECT * FROM sodas WHERE id IN ({$results['sodas']}) ORDER BY name ASC");
 	$sodaNames = '';
 	while($gettingSodaNames = $grabSodaNames->fetch_assoc()){
 		$sodaNames .= "<li>".addslashes($gettingSodaNames['name'])."</li>";
