@@ -1,5 +1,3 @@
-var x = document.getElementById("demo");
-
 function initialize() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
