@@ -161,7 +161,7 @@ $sodaSql = $mysqli->query("SELECT * FROM sodas ORDER BY name ASC");
 			<div style="margin-top:10px">* = Required Fields</div>
 			<a href="javascript:void(0)" onclick="saveFaygo();" class="button">Save</a>
 		</div>
-		<div id="map-canvas"></div>
+		<div id="map-canvas"><img src="images/ajax-loader.gif" /></div>
 	</body>
 </html>
 <?php $mysqli->close(); ?>
