@@ -55,7 +55,7 @@ $sodaSql = $mysqli->query("SELECT * FROM sodas ORDER BY name ASC");
 			var infoWindowContent = [ <?php $i = 0;
 			foreach($locations as $results){ $i++;
 			//while($results = $sql->fetch_assoc()){ $i++; ?>
-				['<?=$results["store_name"];?><br><?=$results["city"];?> <?=$results["state"];?>. <?=$results["address"];?><br><?=$results["sodaNames"];?>']<?php if($i != $countRows){?>,<?php } ?>
+				['<strong><?=$results["store_name"];?></strong><br><?=$results["city"];?> <?=$results["state"];?>. <?=$results["address"];?><br><?=$results["sodaNames"];?>']<?php if($i != $countRows){?>,<?php } ?>
 				<?php 
 			} ?> ];
 
