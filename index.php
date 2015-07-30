@@ -28,8 +28,10 @@ $sodaSql = $mysqli->query("SELECT * FROM sodas ORDER BY name ASC");
 		<meta property="og:description" content="Use this tool to search for or log the nearest store with Faygo soda." />
 		<meta property="og:image" content="http://faygosearch.tk/images/favicon_big.png" />
 		<link rel="stylesheet" type="text/css" href="styles.css" />
+		<link rel="stylesheet" type="text/css" href="scripts/chosen.min.css" />
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC4RJ-gzdvIohmgHvcU1LnzMyPsaQED45s"></script>
+		<script type="text/javascript" src="scripts/chosen.jquery.js"></script>
 		<script type="text/javascript" src="scripts.js"></script>
 		<script type="text/javascript">
 		function makeMap(latitude,longitude,z){
@@ -153,7 +155,7 @@ $sodaSql = $mysqli->query("SELECT * FROM sodas ORDER BY name ASC");
 			<div class="former">Address: *</div>
 			<input type="text" id="input-address" />
 			<div class="former">Faygo Flavors:</div>
-			<select id="input-faygos" multiple="multiple">
+			<select id="input-faygos" multiple="multiple" style="width:177px">
 				<?php while($sodaResults = $sodaSql->fetch_assoc()){ ?>
 					<option value="<?=$sodaResults['id'];?>"><?=$sodaResults['name'];?></option>
 				<?php } ?>

@@ -1,3 +1,9 @@
+$(document).ready(function(){
+	$("#input-faygos").chosen({
+		width: '176px'
+	});
+});
+
 function initialize() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
