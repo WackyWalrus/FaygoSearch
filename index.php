@@ -88,9 +88,10 @@ $sodaSql = $mysqli->query("SELECT * FROM sodas ORDER BY name ASC");
 		</script>
 	</head>
 	<body>
-		<h3><?=$siteName;?> <a href="javascript:void(0);" onclick="addStoreAction();" class="button" style="position:relative;left:50px">Add Store</a></h3>
+		<h3><?=$siteName;?> <a href="javascript:void(0);" onclick="addStoreAction();this.style.display='none';" class="button" style="position:relative;left:50px">Add Store</a></h3>
 		<div style="text-align:center;margin-bottom:20px"><?=$countRows;?> Stores with Faygo Found!</div>
 		<div id="add-store">
+			<h4>Add Store</h4>
 			<div class="former">Store Name: *</div>
 			<input type="text" id="input-store-name" />
 			<div class="former">State: *</div>
