@@ -1,5 +1,28 @@
 <?php include 'cfg.php';
-$sql = $mysqli->query("SELECT * FROM faygos");
+
+if($_GET['search']){
+	$zipcode = $mysqli->real_escape_string($_GET['search']);
+	$zipcode_qry = $mysqli->query("SELECT * FROM saved_zipcodes WHERE zipcode = '{$zipcode}' LIMIT 1");
+	if($zipcode_qry->num_rows){
+		$zipcode_qry_results = $zipcode_qry->fetch_assoc();
+		$lat = $zipcode_qry_results['lat'];
+		$lng = $zipcode_qry_results['lng'];
+	}else{
+		$url = "http://maps.googleapis.com/maps/api/geocode/json?address={$zipcode}";
+		$response = curl_get_contents($url);
+	    $array = json_decode($response);
+	    $lat = $array->results[0]->geometry->location->lat;
+	    $lng = $array->results[0]->geometry->location->lng;
+	    $time = time();
+	    $mysqli->query("INSERT INTO saved_zipcodes (zipcode,lat,lng,datestamp) VALUES ('{$zipcode}','{$lat}','{$lng}',{$time})");
+	}
+	$qry = "SELECT *,(3959 * acos(cos(radians({$lat})) * cos(radians(lat)) * cos(radians(lng) - radians({$lng})) + sin(radians({$lat})) * sin(radians(lat)))) AS distance FROM faygos HAVING distance < 25 ORDER BY distance LIMIT 0,20";
+}else{
+	$qry = "SELECT * FROM faygos";
+}
+
+$sql = $mysqli->query("{$qry}");
+
 $locations = array();
 while($results = $sql->fetch_assoc()){
 	$grabSodaNames = $mysqli->query("SELECT * FROM sodas WHERE id IN ({$results['sodas']})");
