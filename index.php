@@ -131,6 +131,13 @@ $sodaSql = $mysqli->query("SELECT * FROM sodas ORDER BY name ASC");
 			<div style="margin-top:10px">* = Required Fields</div>
 			<a href="javascript:void(0)" onclick="saveFaygo();" class="button">Save</a>
 		</div>
+		<form action="index.php" method="get" class="search-form">
+			<h3>Find Faygo</h3>
+			<input type="text" name="search" placeholder="Enter Zipcode"<?php if($_GET['search']){?> value="<?=$_GET['search'];?>" <?php } ?>/>
+			<div class="clear"></div>
+			<input type="submit" value="Search" class="button" />
+			<div class="clear"></div>
+		</form>
 		<div id="map-canvas"><img src="images/ajax-loader.gif" /></div>
 	</body>
 </html>
